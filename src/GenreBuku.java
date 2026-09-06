@@ -19,5 +19,20 @@ public class GenreBuku {
     public String getNamaGenre() {
         return namaGenre;
     }
-}
 
+    public void tambahBuku(Buku b) {
+        if (!daftarBuku.contains(b)) {
+            daftarBuku.add(b);
+            b.tambahGenre(this);
+        }
+    }
+
+    public void tampilkanBuku() {
+        System.out.println("Daftar buku dengan genre" + namaGenre + ":");
+        int i = 1;
+        for (Buku b : daftarBuku) {
+            System.out.println(i + ". " + b.getJudul() + " (" + b.getKodeBuku() + ")");
+            i++;
+        }
+    }
+}
