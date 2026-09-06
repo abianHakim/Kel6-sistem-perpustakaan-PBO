@@ -43,8 +43,8 @@ public class Buku {
 
     public void tampilkanGenre(){
         System.out.print(judul + "- Genre:");
-        for(int i = 0; i < daftarGenre.size()); i++){
-            System.out.print(daftarGenre.get(i).getNameGenre());
+        for(int i = 0; i < daftarGenre.size(); i++){
+            System.out.print(daftarGenre.get(i).getNamaGenre());
             if(i < daftarGenre.size() - 1) System.out.print(", ");
         }
         System.out.println();
