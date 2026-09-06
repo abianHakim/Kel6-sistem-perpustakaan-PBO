@@ -36,4 +36,25 @@ public class Buku {
     public boolean isTersedia(){
         return peminjam == null;
     }
+
+    void setPeminjam(Member m){
+        this.peminjam = m;
+    }
+
+    public void tampilkanGenre(){
+        System.out.print(judul + "- Genre:");
+        for(int i = 0; i < daftarGenre.size()); i++){
+            System.out.print(daftarGenre.get(i).getNameGenre());
+            if(i < daftarGenre.size() - 1) System.out.print(", ");
+        }
+        System.out.println();
+    }
+
+    public void tampilkanStatus(){
+        if(isTersedia()){
+            System.out.println(judul + " (" + kodeBuku + ") - Tersedia");
+        } else {
+            System.out.println(judul + " (" + kodeBuku + ") - Dipinjam oleh" + peminjam.getNama());
+        }
+    }
 }
