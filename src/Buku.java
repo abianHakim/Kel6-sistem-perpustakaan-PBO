@@ -5,7 +5,7 @@ public class Buku {
     private String judul;
     private String kodeBuku;
     private List<GenreBuku> daftarGenre; // many-to-many ke GenreBuku
-    private Member peminjam;             // many-to-one ke Member, null = tersedia
+    private Anggota peminjam;             // many-to-one ke Member, null = tersedia
 
     public Buku(String judul, String kodeBuku){
         this.judul = judul;
@@ -29,7 +29,7 @@ public class Buku {
         }
     }
 
-    public Member getPeminjam(){
+    public Anggota getPeminjam(){
         return peminjam;
     }
 
@@ -37,7 +37,7 @@ public class Buku {
         return peminjam == null;
     }
 
-    void setPeminjam(Member m){
+    void setPeminjam(Anggota m){
         this.peminjam = m;
     }
 
