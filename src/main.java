@@ -18,8 +18,8 @@ public class main {
         b3.tambahGenre(g3); // Sapiens = Sains
 
         // 4. Buat member
-        Member m1 = new Member("Abian", "MB001");
-        Member m2 = new Member("Rheika", "MB002");
+        Anggota m1 = new Anggota("Abian", "MB001");
+        Anggota m2 = new Anggota("Rheika", "MB002");
 
         System.out.println("=== Percobaan Peminjaman ===");
         m1.pinjamBuku(b1); // berhasil
