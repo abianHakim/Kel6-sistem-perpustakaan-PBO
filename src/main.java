@@ -1,53 +1,35 @@
 public class main {
     public static void main(String[] args) {
 
-        // 1. Buat genre
         GenreBuku g1 = new GenreBuku("G01", "Fiksi");
         GenreBuku g2 = new GenreBuku("G02", "Fantasi");
         GenreBuku g3 = new GenreBuku("G03", "Sains");
 
-        // 2. Buat buku
         Buku b1 = new Buku("Harry Potter", "BK001");
         Buku b2 = new Buku("Bumi Manusia", "BK002");
         Buku b3 = new Buku("Sapiens", "BK003");
+        Buku b4 = new Buku("Filosofi Teras", "BK004");
 
-        // 3. Pasang genre ke buku (many-to-many, boleh lebih dari 1 genre)
         b1.tambahGenre(g1);
-        b1.tambahGenre(g2); // Harry Potter = Fiksi + Fantasi
-        b2.tambahGenre(g1); // Bumi Manusia = Fiksi
-        b3.tambahGenre(g3); // Sapiens = Sains
+        b1.tambahGenre(g2);
+        b2.tambahGenre(g1);
+        b3.tambahGenre(g3);
+        b4.tambahGenre(g1);
 
-        // 4. Buat member
-        Anggota m1 = new Anggota("Abian", "MB001");
-        Anggota m2 = new Anggota("Rheika", "MB002");
+        // Polymorphism: dua jenis Anggota, kuota beda otomatis
+        Anggota m1 = new Mahasiswa("Abian", "MB001", "J0403251069", "TI");
+        Anggota d1 = new Dosen("Pak Supardi", "DS001", "987654");
 
         System.out.println("=== Percobaan Peminjaman ===");
-        m1.pinjamBuku(b1); // berhasil
-        m2.pinjamBuku(b1); // gagal, sudah dipinjam m1
-        m1.pinjamBuku(b3); // berhasil
-        m2.pinjamBuku(b2); // berhasil
+        m1.pinjamBuku(b1);
+        m1.pinjamBuku(b2);
+        m1.pinjamBuku(b3);
+        m1.pinjamBuku(b4); // gagal, mahasiswa maks 3
 
-        System.out.println("\n=== Status Semua Buku ===");
-        b1.tampilkanStatus();
-        b2.tampilkanStatus();
-        b3.tampilkanStatus();
+        d1.pinjamBuku(b4); // dosen masih bisa
 
-        System.out.println("\n=== Genre per Buku ===");
-        b1.tampilkanGenre();
-        b2.tampilkanGenre();
-        b3.tampilkanGenre();
-
-        System.out.println("\n=== Daftar Pinjaman per Member ===");
+        System.out.println("\n=== Daftar Pinjaman ===");
         m1.tampilkanPinjaman();
-        m2.tampilkanPinjaman();
-
-        System.out.println("\n=== Pengembalian ===");
-        m1.kembalikanBuku(b1);
-        m2.pinjamBuku(b1); // sekarang berhasil
-
-        System.out.println("\n=== Buku per Genre ===");
-        g1.tampilkanBuku();
-        g2.tampilkanBuku();
-        g3.tampilkanBuku();
+        d1.tampilkanPinjaman();
     }
 }
