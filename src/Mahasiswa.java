@@ -17,6 +17,11 @@ public class Mahasiswa extends Anggota {
     }
 
     @Override
+    public String getTipeAnggota() {
+        return "Mahasiswa";
+    }
+
+    @Override
     public int getMaxPinjam(){
         return 3;
     }

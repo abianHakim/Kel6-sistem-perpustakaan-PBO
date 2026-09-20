@@ -14,4 +14,9 @@ public class Dosen extends Anggota {
     public int getMaxPinjam(){
         return 10;
     }
+
+    @Override
+    public String getTipeAnggota() {
+        return "Dosen";
+    }
 }

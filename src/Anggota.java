@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Anggota {
+public abstract class Anggota implements Peminjam{
     protected String nama;
     protected String idAnggota;
     protected List<Buku> daftarPinjaman;
@@ -22,10 +22,13 @@ public abstract class Anggota {
 
     // methode abstrack: setiap anggota wajib tentukan kuota sendiri 
     public abstract int getMaxPinjam();
+    public abstract String getTipeAnggota();   
 
+    @Override                         
     public void pinjamBuku(Buku b){
+        // isi logic TETAP SAMA, tidak diubah
         if(!b.isTersedia()){
-               System.out.println("Gagal: \"" + b.getJudul() + "\" sedang dipinjam oleh " + b.getPeminjam().getNama());
+            System.out.println("Gagal: \"" + b.getJudul() + "\" sedang dipinjam oleh " + b.getPeminjam().getNama());
             return;
         }
         if(daftarPinjaman.size() >= getMaxPinjam()){
@@ -37,6 +40,7 @@ public abstract class Anggota {
         System.out.println(nama + " berhasil meminjam \"" + b.getJudul() + "\"");
     }
 
+    @Override
     public void kembalikanBuku(Buku b){
         if(daftarPinjaman.contains(b)){
             daftarPinjaman.remove(b);
@@ -48,7 +52,7 @@ public abstract class Anggota {
     }
     
     public void tampilkanPinjaman(){
-        System.out.println("Daftar Pinjaman " + nama + " (maks " + getMaxPinjam() + "):");
+         System.out.println("Daftar Pinjaman " + nama + " (" + getTipeAnggota() + ", maks " + getMaxPinjam() + "):");
         int i = 1;
         for(Buku b : daftarPinjaman){
             System.out.println(i + ". " + b.getKodeBuku() + " - " + b.getJudul());
