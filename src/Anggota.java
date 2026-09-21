@@ -20,6 +20,10 @@ public abstract class Anggota implements Peminjam{
         return idAnggota;
     }
 
+    public int getJumlahPinjam(){
+        return daftarPinjaman.size();
+    }
+
     // methode abstrack: setiap anggota wajib tentukan kuota sendiri 
     public abstract int getMaxPinjam();
     public abstract String getTipeAnggota();   
